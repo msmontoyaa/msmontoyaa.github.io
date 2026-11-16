@@ -194,7 +194,7 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
       </div>
     </div>
     <div class="portrait">
-      <div class="frame"><img src="https://static.wixstatic.com/media/419075_77686566842246dd9540b0c0dcc58f59~mv2.jpg" alt="Maria Montoya-Chang at graduation, holding her cap"></div>
+      <div class="frame"><img src="images/full/419075_77686566842246dd9540b0c0dcc58f59.jpg" alt="Maria Montoya-Chang at graduation, holding her cap"></div>
       <div class="chip c1"><b data-count="0.93" data-dec="2">0.93</b>AUC predicting<br>online purchases</div>
       <div class="chip c2"><b data-count="418">418</b>Real Madrid<br>matches analyzed</div>
       <div class="chip c3"><b data-count="66">66</b>years of Fed<br>rate decisions</div>
@@ -289,7 +289,7 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
     <div class="cgrid">
 
       <article class="ccard rv">
-        <div class="cover"><img loading="lazy" src="https://static.wixstatic.com/media/419075_8dab880258c240e68c467a091969d88a~mv2.jpeg/v1/fit/w_900,h_900,q_85/a.jpeg" alt="Rollins College social media work"></div>
+        <div class="cover"><img loading="lazy" src="images/full/419075_8dab880258c240e68c467a091969d88a.jpeg" alt="Rollins College social media work"></div>
         <div class="body">
           <div class="role">Instagram &amp; LinkedIn · my favorite</div>
           <h3>Rollins College</h3>
@@ -304,7 +304,7 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
       </article>
 
       <article class="ccard rv">
-        <div class="cover"><img loading="lazy" src="https://static.wixstatic.com/media/419075_8502a2ae3d314a428547924103798301~mv2.png/v1/fit/w_900,h_900,q_85/a.png" alt="Ronald McDonald House flyer design"></div>
+        <div class="cover"><img loading="lazy" src="images/full/419075_8502a2ae3d314a428547924103798301.jpg" alt="Ronald McDonald House flyer design"></div>
         <div class="body">
           <div class="role">Nonprofit · graphic design</div>
           <h3>Ronald McDonald House</h3>
@@ -314,7 +314,7 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
       </article>
 
       <article class="ccard rv">
-        <div class="cover"><img loading="lazy" src="https://static.wixstatic.com/media/419075_b40ce5a327904462bcd7fbdf0e54bf8b~mv2.png/v1/fit/w_900,h_900,q_85/a.png" alt="Abbey Community Centre outreach material"></div>
+        <div class="cover"><img loading="lazy" src="images/full/419075_b40ce5a327904462bcd7fbdf0e54bf8b.jpg" alt="Abbey Community Centre outreach material"></div>
         <div class="body">
           <div class="role">London · fundraising &amp; social</div>
           <h3>Abbey Community Centre</h3>
@@ -365,8 +365,8 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
 <dialog id="lb"><button aria-label="Close">×</button><img alt=""></dialog>
 
 <script>
-const WIX='https://static.wixstatic.com/media/';
-const wix=(id,w)=>WIX+id+'/v1/fit/w_'+w+',h_'+w+',q_85/a.'+id.split('.').pop();
+// photos live in images/thumb (small) and images/full (large, PNGs saved as JPG)
+const wix=(id,w)=>{const n=id.replace('~mv2','');return w<=160?'images/thumb/'+n:'images/full/'+n.replace(/\.png$/,'.jpg')};
 
 // thumbnails + lightbox
 const lb=document.getElementById('lb'), lbImg=lb.querySelector('img');
