@@ -31,7 +31,7 @@ em{font-style:italic;color:var(--p600)}
 /* nav */
 .nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(255,247,250,.78);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;height:62px}
-.logo{font-family:var(--serif);font-size:22px;font-weight:600;text-decoration:none;color:var(--p900)}
+.logo{font-family:var(--serif);font-size:19px;font-weight:600;text-decoration:none;color:var(--p900)}
 .logo span{color:var(--p600);font-style:italic}
 .nav nav{display:flex;gap:6px}
 .nav nav a{text-decoration:none;font-size:14.5px;font-weight:500;padding:8px 13px;border-radius:999px;transition:background .2s,color .2s}
@@ -42,17 +42,19 @@ em{font-style:italic;color:var(--p600)}
 
 /* hero */
 .hero{position:relative;padding:72px 0 56px}
-.blob{position:absolute;border-radius:50%;filter:blur(70px);opacity:.75;z-index:0;pointer-events:none;animation:drift 16s ease-in-out infinite alternate}
+.blob{position:absolute;border-radius:50%;filter:blur(80px);opacity:.5;z-index:0;pointer-events:none;animation:drift 16s ease-in-out infinite alternate}
 .b1{width:440px;height:440px;background:var(--p100);top:-120px;left:-120px}
 .b2{width:380px;height:380px;background:#FFD3C4;top:120px;right:-110px;animation-duration:20s}
 .b3{width:300px;height:300px;background:var(--p300);opacity:.4;bottom:-80px;left:38%;animation-duration:24s}
 @keyframes drift{to{transform:translate(40px,30px) scale(1.12)}}
 .hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center}
-.hero h1{font-size:clamp(44px,7.4vw,86px);margin:16px 0 20px;color:var(--p900)}
+.hero h1{font-size:clamp(40px,5.6vw,64px);margin:0 0 8px;color:var(--p900)}
+.sub{font-family:var(--serif);font-size:clamp(22px,2.6vw,28px);margin:0;color:var(--p600)}
 .hero h1 em{display:block}
 .lede{font-size:19px;max-width:34em;color:var(--ink)}
-.edu{margin:26px 0 30px;display:grid;gap:10px}
-.edu div{display:flex;gap:12px;align-items:baseline;font-size:15.5px}
+.edu{margin:30px 0 32px;display:grid;gap:16px}
+.edu div{display:grid;gap:1px;font-size:16.5px;padding-left:14px;border-left:2px solid var(--p300)}
+.edu span{color:var(--muted)}
 .edu b{flex:none;font-size:12px;letter-spacing:.08em;background:var(--p50);color:var(--p700);padding:3px 9px;border-radius:999px}
 .btns{display:flex;flex-wrap:wrap;gap:12px}
 .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15.5px;padding:14px 22px;border-radius:999px;transition:transform .2s,box-shadow .2s,background .2s}
@@ -79,7 +81,7 @@ em{font-style:italic;color:var(--p600)}
 /* sections */
 section{padding:84px 0}
 .head{display:flex;justify-content:space-between;align-items:end;gap:24px;flex-wrap:wrap;margin-bottom:38px}
-.head h2{font-size:clamp(34px,5vw,54px);color:var(--p900);margin-top:10px}
+.head h2{font-size:clamp(30px,4vw,42px);color:var(--p900);margin-top:10px}
 .head p{max-width:30em;margin:0;color:var(--muted)}
 
 /* data projects */
@@ -87,8 +89,8 @@ section{padding:84px 0}
 .proj:hover{box-shadow:0 30px 60px -36px rgba(136,14,79,.55);transform:translateY(-3px)}
 .proj:nth-child(even) .viz{order:-1}
 .proj .body{padding:34px}
-.num{font-family:var(--serif);font-style:italic;color:var(--p300);font-size:20px}
-.proj h3{font-size:29px;margin:6px 0 12px;color:var(--p900)}
+.num{font-size:12.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p700)}
+.proj h3{font-size:25px;line-height:1.2;margin:6px 0 12px;color:var(--p900)}
 .proj p{margin:0 0 18px;color:var(--ink)}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}
 .stat{background:var(--p50);border-radius:14px;padding:12px 12px 10px}
@@ -139,7 +141,7 @@ section{padding:84px 0}
 .about::before{content:"";position:absolute;width:420px;height:420px;border-radius:50%;background:var(--p600);filter:blur(90px);opacity:.55;right:-120px;top:-140px}
 .about>*{position:relative}
 .about .eyebrow{color:var(--p100)}
-.about h2{font-size:clamp(32px,4.6vw,50px);margin:10px 0 18px}
+.about h2{font-size:clamp(30px,4vw,42px);margin:10px 0 18px}
 .about h2 em{color:var(--p300)}
 .about p{color:#FCE4EC;margin:0 0 14px}
 .contact{display:grid;gap:10px;align-content:center}
@@ -165,7 +167,7 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
 
 <header class="nav">
   <div class="wrap">
-    <a class="logo" href="#top">Maria<span>.</span></a>
+    <a class="logo" href="#top">Maria Montoya-Chang</a>
     <nav>
       <a href="#data">Data</a>
       <a href="#creative">Creative</a>
@@ -178,47 +180,38 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
 
 <main id="top">
 <div class="hero">
-  <div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div>
+  <div class="blob b1"></div><div class="blob b2"></div>
   <div class="wrap">
     <div>
-      <div class="eyebrow">Marketing × Data Analytics</div>
-      <h1>Maria Montoya-Chang <em>tells stories with data.</em></h1>
-      <p class="lede">I plan, shoot and design content people actually stop for, then I use Python and R to find out why it worked. Half creative, half analyst, fully pink.</p>
+      <h1>Maria Montoya-Chang</h1>
+      <p class="sub">Digital Portfolio</p>
       <div class="edu">
-        <div><b>UCF ’28</b><span>MS in Data Analytics (AI Track), University of Central Florida</span></div>
-        <div><b>ROLLINS ’26</b><span>BA in International Business, minors in Economics &amp; Data Analytics, Rollins College</span></div>
+        <div><strong>MS in Data Analytics (AI Track)</strong><span>University of Central Florida ’28</span></div>
+        <div><strong>BA in International Business, Economics &amp; Data Analytics Minor</strong><span>Rollins College ’26</span></div>
       </div>
       <div class="btns">
-        <a class="btn solid" href="#data">See data projects →</a>
-        <a class="btn ghost" href="#creative">See creative work</a>
+        <a class="btn solid" href="#data">Data Analytics</a>
+        <a class="btn ghost" href="#creative">Marketing &amp; Creative</a>
       </div>
     </div>
     <div class="portrait">
       <div class="frame"><img src="images/full/419075_77686566842246dd9540b0c0dcc58f59.jpg" alt="Maria Montoya-Chang at graduation, holding her cap"></div>
-      <div class="chip c1"><b data-count="0.93" data-dec="2">0.93</b>AUC predicting<br>online purchases</div>
-      <div class="chip c2"><b data-count="418">418</b>Real Madrid<br>matches analyzed</div>
-      <div class="chip c3"><b data-count="66">66</b>years of Fed<br>rate decisions</div>
     </div>
   </div>
 </div>
 
-<div class="marquee" aria-hidden="true">
-  <div class="track" id="track">
-    <span>Python</span><span>R</span><span>pandas</span><span>statsmodels</span><span>scikit-learn</span><span>Logistic regression</span><span>Random forests</span><span>Time series</span><span>Data storytelling</span><span>Instagram Reels</span><span>Photography</span><span>Graphic design</span><span>Social media strategy</span><span>Nonprofit campaigns</span><span>Grant writing</span>
-  </div>
-</div>
 
 <section id="data">
   <div class="wrap">
     <div class="head rv">
-      <div><div class="eyebrow">01 · Data analytics</div><h2>Questions I answered <em>with data</em></h2></div>
-      <p>Three end-to-end projects: real datasets, clear questions, honest limitations. Every notebook is on GitHub.</p>
+      <div><div class="eyebrow">01 · Data analytics</div><h2>Data Analytics Projects</h2></div>
+      <p>Three projects in Python and R. Each notebook, dataset and write-up is on GitHub.</p>
     </div>
 
     <article class="proj rv">
       <div class="body">
-        <div class="num">Project one · R</div>
-        <h3>Who’s actually going to buy?</h3>
+        <div class="num">R</div>
+        <h3>Predicting Online Purchases from Website Session Data</h3>
         <p>Only about 15% of visits to an online store end in a purchase. I used 12,330 real browsing sessions to predict which ones, comparing logistic regression, a decision tree and a random forest.</p>
         <div class="stats">
           <div class="stat"><b data-count="0.932" data-dec="3">0.932</b><span>AUC, random forest on unseen data</span></div>
@@ -238,8 +231,8 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
 
     <article class="proj rv">
       <div class="body">
-        <div class="num">Project two · Python</div>
-        <h3>What wins matches for Real Madrid?</h3>
+        <div class="num">Python</div>
+        <h3>Real Madrid in La Liga, 2015–2026: What Wins Matches?</h3>
         <p>Eleven La Liga seasons, 2015 to 2026: performance trends, home advantage, the in-game stats that separate wins from everything else, and whether bookmakers price the team correctly.</p>
         <div class="stats">
           <div class="stat"><b data-count="418">418</b><span>matches across 11 seasons</span></div>
@@ -259,8 +252,8 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
 
     <article class="proj rv">
       <div class="body">
-        <div class="num">Project three · Python</div>
-        <h3>How does the Fed set interest rates?</h3>
+        <div class="num">Python</div>
+        <h3>How Does the Federal Reserve Set Interest Rates?</h3>
         <p>A time-series look at the federal funds rate, inflation and unemployment since 1960: testing the Taylor rule, how the Fed’s response to inflation changed by era, and the 2022–23 hiking cycle in context.</p>
         <div class="stats">
           <div class="stat"><b data-count="801">801</b><span>months of official data</span></div>
@@ -283,15 +276,15 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
 <section id="creative" class="creative">
   <div class="wrap">
     <div class="head rv">
-      <div><div class="eyebrow">02 · Marketing &amp; creative</div><h2>Content I planned, shot <em>and designed</em></h2></div>
-      <p>Social media, graphic design and nonprofit campaigns. Tap any thumbnail to see it larger.</p>
+      <div><div class="eyebrow">02 · Marketing &amp; creative</div><h2>Marketing &amp; Creative Work</h2></div>
+      <p>Graphic design and visual media projects, ranging from nonprofit campaigns to social media content.</p>
     </div>
     <div class="cgrid">
 
       <article class="ccard rv">
         <div class="cover"><img loading="lazy" src="images/full/419075_8dab880258c240e68c467a091969d88a.jpeg" alt="Rollins College social media work"></div>
         <div class="body">
-          <div class="role">Instagram &amp; LinkedIn · my favorite</div>
+          <div class="role">Instagram &amp; LinkedIn</div>
           <h3>Rollins College</h3>
           <p>Designed and managed social content for the Center for Career &amp; Life Planning: Reels I planned, shot and edited, plus photography on a Canon EOS R50.</p>
           <div class="thumbs" data-set="419075_e3dc4f3347464cffb181814962cd7a6b~mv2.png,419075_7c767c6f2e2e432cad32f6df0ae7d051~mv2.png,419075_a476cadb78f24b2a8a5fd61ba4771600~mv2.png,419075_39d50b7531974988914046cd36f4d00f~mv2.png,419075_20d809dc2be64410bd6b9f0975b09683~mv2.png,419075_1fd9c49d8e9a4feab1d8463eafd0b2b2~mv2.png,419075_83f9458a2e03426592263ebf7a21ac14~mv2.jpg,419075_2b80b403a74f4c0b8fd85460bd0a063b~mv2.jpeg"></div>
@@ -330,11 +323,11 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
 <section id="next">
   <div class="wrap">
     <div class="head rv">
-      <div><div class="eyebrow">03 · Up next</div><h2>Where marketing <em>meets the data</em></h2></div>
-      <p>Projects on my build list, picked because they sit right between my two worlds.</p>
+      <div><div class="eyebrow">03 · Up next</div><h2>Upcoming Projects</h2></div>
+      <p>Data projects currently in progress.</p>
     </div>
     <div class="ngrid">
-      <div class="ncard rv"><span class="pill">Planned</span><h3>Customer segmentation</h3><p>Group shoppers by how they spend using k-means clustering, then turn each segment into a marketing persona.</p></div>
+      <div class="ncard rv"><span class="pill">Planned</span><h3>Customer segmentation</h3><p>Group shoppers by how they spend using k-means clustering, and describe each segment.</p></div>
       <div class="ncard rv"><span class="pill">Planned</span><h3>A/B test analysis</h3><p>Compare retention between two versions of a product and use bootstrapping to check whether the difference is real or just noise.</p></div>
       <div class="ncard rv"><span class="pill">Planned</span><h3>Fraud detection</h3><p>Work with data where fraud is under 1% of cases and judge the model on precision and recall, not accuracy.</p></div>
     </div>
@@ -346,9 +339,9 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
     <div class="about rv" id="contact">
       <div>
         <div class="eyebrow">About &amp; contact</div>
-        <h2>Creative brain, <em>analyst’s receipts.</em></h2>
-        <p>Hi, I’m Maria. I studied International Business at Rollins College with minors in Economics and Data Analytics, and I’m now doing my MS in Data Analytics (AI Track) at UCF.</p>
-        <p>I love the moment a campaign and a chart say the same thing. If you need someone who can make the content and measure it, let’s talk.</p>
+        <h2>Hi, I’m Maria!</h2>
+        <p>Thank you for your interest in my work. Here you’ll find a selection of my graphic design and visual media projects, ranging from nonprofit campaigns to social media content, along with my data analytics projects.</p>
+        <p>Please feel free to explore, especially the Rollins College section, which is my personal favorite. There, you’ll find Instagram Reels that I planned, shot, and edited, along with photography captured on a Canon EOS R50.</p>
       </div>
       <div class="contact">
         <a href="https://www.linkedin.com/in/maria-montoya-chang/" target="_blank" rel="noopener"><span>LinkedIn<small>in/maria-montoya-chang</small></span><span>↗</span></a>
@@ -360,7 +353,7 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
 </section>
 </main>
 
-<footer>© <span id="yr"></span> Maria Montoya-Chang · Made with a lot of pink</footer>
+<footer>© <span id="yr"></span> Maria Montoya-Chang</footer>
 
 <dialog id="lb"><button aria-label="Close">×</button><img alt=""></dialog>
 
@@ -382,7 +375,7 @@ document.querySelectorAll('.thumbs').forEach(t=>{
 lb.addEventListener('click',()=>lb.close());
 
 // marquee: duplicate for a seamless loop
-const tr=document.getElementById('track'); tr.innerHTML+=tr.innerHTML;
+
 
 // reveal + count-up
 const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -405,7 +398,7 @@ function check(){
 }
 addEventListener('scroll',check,{passive:true});addEventListener('resize',check);
 check();
-document.querySelectorAll('.chip [data-count]').forEach(count);
+
 document.getElementById('yr').textContent=new Date().getFullYear();
 </script>
 </body>
