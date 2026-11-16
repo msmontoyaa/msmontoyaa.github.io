@@ -26,7 +26,7 @@ a{color:inherit}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 20px}
 h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.08;margin:0;letter-spacing:-.015em}
 em{font-style:italic;color:var(--p600)}
-.eyebrow{font-size:12.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--p700)}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--p700)}
 
 /* nav */
 .nav{position:sticky;top:0;z-index:20;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(255,247,250,.78);border-bottom:1px solid var(--line)}
@@ -63,6 +63,8 @@ em{font-style:italic;color:var(--p600)}
 .btn.ghost{background:#fff;color:var(--p900);border:1px solid var(--line)}
 .btn.ghost:hover{transform:translateY(-2px);box-shadow:0 10px 24px -14px rgba(136,14,79,.5)}
 .portrait{position:relative;justify-self:center;width:min(100%,380px)}
+.portrait::before{content:"";position:absolute;inset:0;transform:translate(16px,16px);border:2px solid var(--p300);border-radius:200px 200px 26px 26px}
+.portrait .frame{position:relative}
 .portrait .frame{border-radius:200px 200px 26px 26px;overflow:hidden;border:8px solid #fff;box-shadow:0 30px 60px -28px rgba(136,14,79,.55);aspect-ratio:4/5;background:var(--p50)}
 .portrait img{width:100%;height:100%;object-fit:cover}
 .chip{position:absolute;background:#fff;border-radius:16px;padding:10px 14px;box-shadow:0 14px 30px -16px rgba(136,14,79,.6);font-size:12.5px;line-height:1.25;color:var(--muted);animation:bob 5s ease-in-out infinite}
@@ -108,7 +110,7 @@ section{padding:84px 0}
 @media(max-width:860px){.proj{grid-template-columns:1fr}.proj .viz{order:-1}.proj .body{padding:24px}.viz{min-height:0;padding:18px}}
 
 /* creative */
-.creative{background:linear-gradient(180deg,#fff, var(--p50))}
+.creative{background:#fff;border-block:1px solid var(--line)}
 .cgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
 .ccard{background:#fff;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .3s,box-shadow .3s}
 .ccard:hover{transform:translateY(-4px);box-shadow:0 30px 60px -36px rgba(136,14,79,.55)}
@@ -169,9 +171,8 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
   <div class="wrap">
     <a class="logo" href="#top">Maria Montoya-Chang</a>
     <nav>
-      <a href="#data">Data</a>
-      <a href="#creative">Creative</a>
-      <a href="#about">About</a>
+      <a href="#creative">Marketing</a>
+      <a href="#data">Data Analytics</a>
       <a class="cta" href="#contact">Contact</a>
     </nav>
   </div>
@@ -189,8 +190,8 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
         <div><strong>BA in International Business, Economics &amp; Data Analytics Minor</strong><span>Rollins College ’26</span></div>
       </div>
       <div class="btns">
-        <a class="btn solid" href="#data">Data Analytics</a>
-        <a class="btn ghost" href="#creative">Marketing &amp; Creative</a>
+        <a class="btn solid" href="#creative">Marketing &amp; Creative</a>
+        <a class="btn ghost" href="#data">Data Analytics</a>
       </div>
     </div>
     <div class="portrait">
@@ -200,10 +201,57 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
 </div>
 
 
+<section id="creative" class="creative">
+  <div class="wrap">
+    <div class="head rv">
+      <div><div class="eyebrow">01 · Marketing &amp; Creative</div><h2>Marketing &amp; Creative Work</h2></div>
+      <p>Graphic design and visual media projects, ranging from nonprofit campaigns to social media content.</p>
+    </div>
+    <div class="cgrid">
+
+      <article class="ccard rv">
+        <div class="cover"><img loading="lazy" src="images/full/419075_8dab880258c240e68c467a091969d88a.jpeg" alt="Rollins College social media work"></div>
+        <div class="body">
+          <div class="role">Instagram &amp; LinkedIn</div>
+          <h3>Rollins College</h3>
+          <p>Designed and managed social content for the Center for Career &amp; Life Planning: Reels I planned, shot and edited, plus photography on a Canon EOS R50.</p>
+          <div class="thumbs" data-set="419075_e3dc4f3347464cffb181814962cd7a6b~mv2.png,419075_7c767c6f2e2e432cad32f6df0ae7d051~mv2.png,419075_a476cadb78f24b2a8a5fd61ba4771600~mv2.png,419075_39d50b7531974988914046cd36f4d00f~mv2.png,419075_20d809dc2be64410bd6b9f0975b09683~mv2.png,419075_1fd9c49d8e9a4feab1d8463eafd0b2b2~mv2.png,419075_83f9458a2e03426592263ebf7a21ac14~mv2.jpg,419075_2b80b403a74f4c0b8fd85460bd0a063b~mv2.jpeg"></div>
+          <div class="reels">
+            <a href="https://www.instagram.com/reel/DPW8nVrDpt0/" target="_blank" rel="noopener">▶ Reel 1</a>
+            <a href="https://www.instagram.com/reel/DDFtK8ZxgUA/" target="_blank" rel="noopener">▶ Reel 2</a>
+            <a href="https://www.instagram.com/reel/Cl9ev0Hg6UB/" target="_blank" rel="noopener">▶ Reel 3</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="ccard rv">
+        <div class="cover"><img loading="lazy" src="images/full/419075_8502a2ae3d314a428547924103798301.jpg" alt="Ronald McDonald House flyer design"></div>
+        <div class="body">
+          <div class="role">Nonprofit · graphic design</div>
+          <h3>Ronald McDonald House</h3>
+          <p>Supported operations for a nonprofit serving families with hospitalized children, designing promotional flyers and materials for fundraising and community outreach events.</p>
+          <div class="thumbs" data-set="419075_8502a2ae3d314a428547924103798301~mv2.png,419075_819e0c44f13940789fceec7383265fd6~mv2.png,419075_863bad1c902641b1b8f63e24106b85ba~mv2.png"></div>
+        </div>
+      </article>
+
+      <article class="ccard rv">
+        <div class="cover"><img loading="lazy" src="images/full/419075_b40ce5a327904462bcd7fbdf0e54bf8b.jpg" alt="Abbey Community Centre outreach material"></div>
+        <div class="body">
+          <div class="role">London · fundraising &amp; social</div>
+          <h3>Abbey Community Centre</h3>
+          <p>Contributed to fundraising at a London community centre through grant proposal writing and digital outreach materials, while managing donor communications and social media.</p>
+          <div class="thumbs" data-set="419075_b40ce5a327904462bcd7fbdf0e54bf8b~mv2.png,419075_db901148e4f449cea33f84748ed6daad~mv2.png,419075_b62d329329ad45dc9c694faad8848ed7~mv2.png,419075_f7fa824f58d949daa8336812bcc78eae~mv2.png,419075_aba489a6433b4dd1a77d73525cd42fb4~mv2.png,419075_9309164799604f3aa2c63aacbd357dd5~mv2.png"></div>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
 <section id="data">
   <div class="wrap">
     <div class="head rv">
-      <div><div class="eyebrow">01 · Data analytics</div><h2>Data Analytics Projects</h2></div>
+      <div><div class="eyebrow">02 · Data Analytics</div><h2>Data Analytics Projects</h2></div>
       <p>Three projects in Python and R. Each notebook, dataset and write-up is on GitHub.</p>
     </div>
 
@@ -272,58 +320,13 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
   </div>
 </section>
 
-<section id="creative" class="creative">
-  <div class="wrap">
-    <div class="head rv">
-      <div><div class="eyebrow">02 · Marketing &amp; creative</div><h2>Marketing &amp; Creative Work</h2></div>
-      <p>Graphic design and visual media projects, ranging from nonprofit campaigns to social media content.</p>
-    </div>
-    <div class="cgrid">
 
-      <article class="ccard rv">
-        <div class="cover"><img loading="lazy" src="images/full/419075_8dab880258c240e68c467a091969d88a.jpeg" alt="Rollins College social media work"></div>
-        <div class="body">
-          <div class="role">Instagram &amp; LinkedIn</div>
-          <h3>Rollins College</h3>
-          <p>Designed and managed social content for the Center for Career &amp; Life Planning: Reels I planned, shot and edited, plus photography on a Canon EOS R50.</p>
-          <div class="thumbs" data-set="419075_e3dc4f3347464cffb181814962cd7a6b~mv2.png,419075_7c767c6f2e2e432cad32f6df0ae7d051~mv2.png,419075_a476cadb78f24b2a8a5fd61ba4771600~mv2.png,419075_39d50b7531974988914046cd36f4d00f~mv2.png,419075_20d809dc2be64410bd6b9f0975b09683~mv2.png,419075_1fd9c49d8e9a4feab1d8463eafd0b2b2~mv2.png,419075_83f9458a2e03426592263ebf7a21ac14~mv2.jpg,419075_2b80b403a74f4c0b8fd85460bd0a063b~mv2.jpeg"></div>
-          <div class="reels">
-            <a href="https://www.instagram.com/reel/DPW8nVrDpt0/" target="_blank" rel="noopener">▶ Reel 1</a>
-            <a href="https://www.instagram.com/reel/DDFtK8ZxgUA/" target="_blank" rel="noopener">▶ Reel 2</a>
-            <a href="https://www.instagram.com/reel/Cl9ev0Hg6UB/" target="_blank" rel="noopener">▶ Reel 3</a>
-          </div>
-        </div>
-      </article>
-
-      <article class="ccard rv">
-        <div class="cover"><img loading="lazy" src="images/full/419075_8502a2ae3d314a428547924103798301.jpg" alt="Ronald McDonald House flyer design"></div>
-        <div class="body">
-          <div class="role">Nonprofit · graphic design</div>
-          <h3>Ronald McDonald House</h3>
-          <p>Supported operations for a nonprofit serving families with hospitalized children, designing promotional flyers and materials for fundraising and community outreach events.</p>
-          <div class="thumbs" data-set="419075_8502a2ae3d314a428547924103798301~mv2.png,419075_819e0c44f13940789fceec7383265fd6~mv2.png,419075_863bad1c902641b1b8f63e24106b85ba~mv2.png"></div>
-        </div>
-      </article>
-
-      <article class="ccard rv">
-        <div class="cover"><img loading="lazy" src="images/full/419075_b40ce5a327904462bcd7fbdf0e54bf8b.jpg" alt="Abbey Community Centre outreach material"></div>
-        <div class="body">
-          <div class="role">London · fundraising &amp; social</div>
-          <h3>Abbey Community Centre</h3>
-          <p>Contributed to fundraising at a London community centre through grant proposal writing and digital outreach materials, while managing donor communications and social media.</p>
-          <div class="thumbs" data-set="419075_b40ce5a327904462bcd7fbdf0e54bf8b~mv2.png,419075_db901148e4f449cea33f84748ed6daad~mv2.png,419075_b62d329329ad45dc9c694faad8848ed7~mv2.png,419075_f7fa824f58d949daa8336812bcc78eae~mv2.png,419075_aba489a6433b4dd1a77d73525cd42fb4~mv2.png,419075_9309164799604f3aa2c63aacbd357dd5~mv2.png"></div>
-        </div>
-      </article>
-
-    </div>
-  </div>
-</section>
 
 <section id="about">
   <div class="wrap">
     <div class="about rv" id="contact">
       <div>
-        <div class="eyebrow">About &amp; contact</div>
+        <div class="eyebrow">03 · Contact</div>
         <h2>Hi, I’m Maria!</h2>
         <p>Thank you for your interest in my work. Here you’ll find a selection of my graphic design and visual media projects, ranging from nonprofit campaigns to social media content, along with my data analytics projects.</p>
         <p>Please feel free to explore, especially the Rollins College section, which is my personal favorite. There, you’ll find Instagram Reels that I planned, shot, and edited, along with photography captured on a Canon EOS R50.</p>
