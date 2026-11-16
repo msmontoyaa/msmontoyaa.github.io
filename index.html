@@ -252,7 +252,7 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
   <div class="wrap">
     <div class="head rv">
       <div><div class="eyebrow">02 · Data Analytics</div><h2>Data Analytics Projects</h2></div>
-      <p>Three projects in Python and R. Each notebook, dataset and write-up is on GitHub.</p>
+      <p>Six projects in Python and R. Each notebook and write-up is on GitHub.</p>
     </div>
 
     <article class="proj rv">
@@ -274,6 +274,48 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
         <a class="link" href="https://github.com/msmontoyaa/online-purchase-prediction" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
       <div class="viz"><img loading="lazy" src="https://raw.githubusercontent.com/msmontoyaa/online-purchase-prediction/main/images/roc_curves.svg" alt="ROC curves comparing logistic regression, decision tree and random forest"></div>
+    </article>
+
+    <article class="proj rv">
+      <div class="body">
+        <div class="num">Python</div>
+        <h3>Customer Segmentation for an Online Retailer</h3>
+        <p>Grouped the customers of a UK online gift retailer into four segments based on how recently, how often and how much they buy, using RFM analysis and k-means clustering.</p>
+        <div class="stats">
+          <div class="stat"><b data-count="4338" data-sep="1">4,338</b><span>customers segmented</span></div>
+          <div class="stat"><b data-count="4">4</b><span>segments from RFM + k-means</span></div>
+          <div class="stat"><b data-count="65" data-suf="%">65%</b><span>of revenue from 17% of customers</span></div>
+        </div>
+        <ul>
+          <li>The top 20% of customers generate about 75% of revenue.</li>
+          <li>Champions are one in six customers and almost two thirds of revenue.</li>
+          <li>Lapsed customers are the largest group (36%) but bring in only 6%.</li>
+        </ul>
+        <div class="tags"><span>Python</span><span>scikit-learn</span><span>K-means</span><span>RFM analysis</span><span>Marketing analytics</span></div>
+        <a class="link" href="https://github.com/msmontoyaa/customer-segmentation-rfm" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+      <div class="viz"><img loading="lazy" src="images/charts/segment_shares.svg" alt="Each customer segment's share of customers versus share of revenue"></div>
+    </article>
+
+    <article class="proj rv">
+      <div class="body">
+        <div class="num">Python</div>
+        <h3>A/B Test Analysis: Mobile Game Retention</h3>
+        <p>Analysed a randomised experiment on 90,189 players of the game Cookie Cats to see whether moving a progression gate from level 30 to level 40 changed how many players came back.</p>
+        <div class="stats">
+          <div class="stat"><b data-count="90189" data-sep="1">90,189</b><span>players in the experiment</span></div>
+          <div class="stat"><b data-count="0.82" data-dec="2" data-pre="−">−0.82</b><span>point drop in 7-day retention</span></div>
+          <div class="stat"><b data-count="0.002" data-dec="3">0.002</b><span>p-value, 7-day retention</span></div>
+        </div>
+        <ul>
+          <li>Moving the gate to level 40 lowered 7-day retention from 19.0% to 18.2%.</li>
+          <li>A bootstrap with 10,000 resamples agreed with the z-test.</li>
+          <li>Flagged a sample ratio mismatch in the group sizes as a limitation.</li>
+        </ul>
+        <div class="tags"><span>Python</span><span>statsmodels</span><span>A/B testing</span><span>Bootstrap</span><span>Power analysis</span></div>
+        <a class="link" href="https://github.com/msmontoyaa/mobile-game-ab-test" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+      <div class="viz"><img loading="lazy" src="images/charts/retention_by_version.svg" alt="1-day and 7-day retention for the gate at level 30 versus level 40"></div>
     </article>
 
     <article class="proj rv">
@@ -316,6 +358,27 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
         <a class="link" href="https://github.com/msmontoyaa/fed-rates-inflation-analysis" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
       <div class="viz"><img loading="lazy" src="https://raw.githubusercontent.com/msmontoyaa/fed-rates-inflation-analysis/main/images/taylor_rule_vs_actual.svg" alt="Taylor rule prescription versus the actual federal funds rate"></div>
+    </article>
+
+    <article class="proj rv">
+      <div class="body">
+        <div class="num">Python</div>
+        <h3>Credit Card Fraud Detection</h3>
+        <p>Built and compared models to detect fraud in 284,807 card transactions where only 0.17% are fraudulent, and showed why accuracy is the wrong measure for rare events.</p>
+        <div class="stats">
+          <div class="stat"><b data-count="284807" data-sep="1">284,807</b><span>transactions, 0.17% fraud</span></div>
+          <div class="stat"><b data-count="78" data-suf="%">78%</b><span>of fraud caught in unseen data</span></div>
+          <div class="stat"><b data-count="14">14</b><span>false alarms in 82,699 transactions</span></div>
+        </div>
+        <ul>
+          <li>A model that calls everything legitimate is 99.83% accurate and catches nothing.</li>
+          <li>The random forest gave the best balance of precision (89%) and recall (78%).</li>
+          <li>Catching 90% of fraud with logistic regression cost 1,867 false alarms.</li>
+        </ul>
+        <div class="tags"><span>Python</span><span>scikit-learn</span><span>Random forest</span><span>Precision / recall</span><span>Imbalanced data</span></div>
+        <a class="link" href="https://github.com/msmontoyaa/credit-card-fraud-detection" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+      <div class="viz"><img loading="lazy" src="images/charts/precision_recall_curves.svg" alt="Precision-recall curves for logistic regression and random forest"></div>
     </article>
   </div>
 </section>
