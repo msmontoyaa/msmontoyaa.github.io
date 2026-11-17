@@ -261,7 +261,7 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
   <div class="wrap">
     <div class="head rv">
       <div><div class="eyebrow">02 · Data Analytics</div><h2>Data Analytics Projects</h2></div>
-      <p>Six projects in Python and R. Each notebook and write-up is on GitHub.</p>
+      <p>Seven projects in SQL, Python and R. Each notebook and write-up is on GitHub.</p>
     </div>
 
     <article class="proj rv">
@@ -304,6 +304,27 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
         <a class="link" href="https://github.com/msmontoyaa/customer-segmentation-rfm" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
       <div class="viz"><img loading="lazy" src="images/charts/segment_shares.svg" alt="Each customer segment's share of customers versus share of revenue"></div>
+    </article>
+
+    <article class="proj rv">
+      <div class="body">
+        <div class="num">SQL</div>
+        <h3>Customer Retention Analysis in SQL</h3>
+        <p>I cleaned a year of transactions from a UK online retailer in SQL, then measured how much revenue comes from returning customers, how quickly new customers reorder, and who is most likely to come back.</p>
+        <div class="stats">
+          <div class="stat"><b data-count="79" data-suf="%">79%</b><span>of revenue from returning customers</span></div>
+          <div class="stat"><b data-count="48" data-suf="%">48%</b><span>of new customers reorder within 90 days</span></div>
+          <div class="stat"><b data-count="18532" data-sep="1">18,532</b><span>orders analyzed</span></div>
+        </div>
+        <ul>
+          <li>Every cohort of customers peaks in November, whenever they first bought.</li>
+          <li>Customers with a large first order return more often (57% vs 40%).</li>
+          <li>All cleaning and analysis is in seven SQL files, using CTEs and window functions.</li>
+        </ul>
+        <div class="tags"><span>SQL</span><span>CTEs</span><span>Window functions</span><span>Cohort analysis</span><span>Data cleaning</span></div>
+        <a class="link" href="https://github.com/msmontoyaa/online-retail-sql-retention" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+      <div class="viz"><img loading="lazy" src="images/charts/cohort_retention_heatmap.svg" alt="Cohort retention heatmap showing the share of each monthly cohort ordering again"></div>
     </article>
 
     <article class="proj rv">
