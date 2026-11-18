@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Employee Engagement Dashboard</title>
+<meta name="description" content="Interactive dashboard of employee survey ratings, attrition and an early-warning risk score, built by Maria Montoya-Chang on IBM's fictional HR dataset.">
+<style>
+:root{
+  --blush:#FFF7FA; --p50:#FCE4EC; --p100:#F8BBD0; --p300:#F48FB1; --p400:#E8A0BF;
+  --p600:#D81B60; --p700:#AD1457; --p900:#880E4F; --ink:#3B0A24; --muted:#7A4A60;
+  --line:rgba(136,14,79,.14); --ok:#2E7D5B; --warn:#B4235A; --r:16px;
+}
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--blush);color:var(--ink);font-family:"Segoe UI",system-ui,-apple-system,sans-serif;font-size:15px;line-height:1.45;-webkit-font-smoothing:antialiased}
+a{color:var(--p700)}
+.wrap{max-width:1240px;margin:0 auto;padding:0 20px 44px}
+header{padding:24px 0 14px;display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap}
+h1{font-size:26px;margin:0;color:var(--p900);letter-spacing:-.01em}
+.sub{margin:4px 0 0;color:var(--muted);font-size:14px;max-width:48em}
+.controls{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.controls label{display:flex;flex-direction:column;font-size:12px;font-weight:600;color:var(--p900);gap:3px}
+select,button{font:inherit;font-size:14px;border:1px solid var(--p100);background:#fff;color:var(--ink);border-radius:10px;padding:7px 10px;cursor:pointer}
+select:focus-visible,button:focus-visible{outline:2px solid var(--p600);outline-offset:2px}
+button.reset{background:transparent;border-color:transparent;color:var(--p700);font-weight:600;padding:7px 4px}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:6px 0 16px}
+.kpi{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:14px 16px}
+.kpi .label{font-size:12.5px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.kpi .val{font-size:30px;font-weight:700;color:var(--p600);line-height:1.15;margin-top:4px}
+.kpi .note{font-size:13px;color:var(--muted)}
+.grid{display:grid;grid-template-columns:1.2fr 1fr;gap:14px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;min-width:0}
+.card h2{font-size:15.5px;margin:0 0 2px;color:var(--p900)}
+.card .hint{font-size:12.5px;color:var(--muted);margin:0 0 10px}
+.cardhead{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;flex-wrap:wrap}
+.span2{grid-column:span 2}
+svg{display:block;width:100%;height:auto;overflow:visible}
+svg text{font-family:inherit}
+.legend{display:flex;flex-wrap:wrap;gap:14px;font-size:12.5px;margin-top:8px}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px}
+.tablewrap{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th{text-align:left;font-size:12px;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);font-weight:600;padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;user-select:none}
+th:hover{color:var(--p900)}
+td{padding:8px 10px;border-bottom:1px solid var(--line);white-space:nowrap}
+.bar{display:inline-block;height:9px;border-radius:5px;background:var(--p600);vertical-align:middle;margin-right:8px}
+#watch td:last-child{white-space:normal;min-width:260px}
+.pill{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:999px;background:var(--p50);color:var(--p900);margin:1px 3px 1px 0}
+.pill.hot{background:#FBE0EA;color:var(--warn)}
+.risk{display:inline-block;min-width:44px;text-align:center;padding:2px 6px;border-radius:7px;font-weight:700;color:#fff}
+.empty{color:var(--muted);padding:10px 0}
+.tip{position:fixed;pointer-events:none;background:var(--ink);color:#fff;font-size:12.5px;padding:6px 9px;border-radius:8px;opacity:0;transition:opacity .1s;z-index:10;max-width:260px}
+footer{color:var(--muted);font-size:12.5px;margin-top:18px;text-align:center}
+@media (max-width:900px){.kpis{grid-template-columns:repeat(2,1fr)}.grid{grid-template-columns:1fr}.span2{grid-column:auto}}
+@media (max-width:480px){.kpis{grid-template-columns:1fr}h1{font-size:21px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div>
+    <h1>Employee Engagement &amp; Attrition Dashboard</h1>
+    <p class="sub">Survey ratings, attrition and an early-warning risk score for 1,470 employees. Built by Maria Montoya-Chang on IBM's <b>fictional</b> HR Analytics dataset. <a href="https://github.com/msmontoyaa/employee-engagement-attrition" target="_blank" rel="noopener">See the analysis on GitHub ↗</a></p>
+  </div>
+  <div class="controls">
+    <label>Department<select id="fDept"></select></label>
+    <label>Overtime<select id="fOt"><option value="">All</option><option>Yes</option><option>No</option></select></label>
+    <label>Job level<select id="fLevel"></select></label>
+    <button class="reset" id="reset">Reset</button>
+  </div>
+</header>
+
+<section class="kpis" id="kpis"></section>
+
+<section class="grid">
+  <div class="card">
+    <h2>How employees rate each area</h2>
+    <p class="hint">Share of employees giving each rating, from 1 (lowest) to 4 (highest). Low ratings sit left of the line.</p>
+    <div id="likert"></div>
+    <div class="legend" id="likertLegend"></div>
+  </div>
+
+  <div class="card">
+    <div class="cardhead">
+      <div><h2>Who left, by rating</h2><p class="hint">Share of employees who left at each rating. The dashed line is the overall rate for the current selection.</p></div>
+      <select id="item" aria-label="Survey question"></select>
+    </div>
+    <div id="byRating"></div>
+  </div>
+
+  <div class="card span2">
+    <h2>Attrition and engagement by role</h2>
+    <p class="hint">Engagement is the average of the five survey ratings (1 to 4). Click a heading to sort.</p>
+    <div class="tablewrap"><table id="roles"></table></div>
+  </div>
+
+  <div class="card span2">
+    <h2>Watch list: current employees with the highest risk</h2>
+    <p class="hint">Employees still at the company, ranked by a cross-validated risk score from the analysis. In practice a list like this would only be used to offer support, such as a check-in with their manager.</p>
+    <div class="tablewrap"><table id="watch"></table></div>
+  </div>
+</section>
+
+<footer>Fictional data from IBM's HR Analytics Employee Attrition dataset · Dashboard and analysis by Maria Montoya-Chang · <a href="https://msmontoyaa.github.io/">msmontoyaa.github.io</a></footer>
+</div>
+<div class="tip" id="tip"></div>
+
+<script src="data.js"></script>
+<script>
+const ALL = window.HR_DATA;
+const ITEMS = [
+  {k:"job", label:"Job satisfaction"}, {k:"env", label:"Environment"}, {k:"rel", label:"Relationships"},
+  {k:"inv", label:"Job involvement"}, {k:"wlb", label:"Work-life balance"},
+];
+const LEVEL_COLORS = {1:"#880E4F", 2:"#E8A0BF", 3:"#F48FB1", 4:"#D81B60"};
+const RISK_CUT = [...ALL.map(d=>d.risk)].sort((a,b)=>a-b)[Math.floor(ALL.length*0.85)];   // top 15% across the whole company
+const $ = id => document.getElementById(id);
+const pct = (a,b) => b ? a/b*100 : 0;
+const f1 = v => v.toFixed(1);
+const eng = d => (d.job+d.env+d.rel+d.inv+d.wlb)/5;
+const tip = $("tip");
+const bindTips = el => el.querySelectorAll("[data-tip]").forEach(c=>{ c.addEventListener("mousemove",e=>{tip.innerHTML=c.dataset.tip;tip.style.opacity=1;tip.style.left=(e.clientX+12)+"px";tip.style.top=(e.clientY+12)+"px";}); c.addEventListener("mouseleave",()=>tip.style.opacity=0); });
+
+const state = {dept:"", ot:"", level:"", item:"inv", roleSort:"left", roleDir:-1};
+const filtered = () => ALL.filter(d=>(!state.dept||d.dept===state.dept)&&(!state.ot||d.ot===state.ot)&&(!state.level||d.level===+state.level));
+
+/* KPIs */
+function renderKPIs(rows){
+  const left = rows.filter(d=>d.left).length, flagged = rows.filter(d=>d.risk>=RISK_CUT), fLeft = flagged.filter(d=>d.left).length;
+  const e = rows.length ? rows.reduce((a,d)=>a+eng(d),0)/rows.length : 0;
+  $("kpis").innerHTML = `
+    <div class="kpi"><div class="label">Employees</div><div class="val">${rows.length.toLocaleString()}</div><div class="note">in the current selection</div></div>
+    <div class="kpi"><div class="label">Left the company</div><div class="val">${f1(pct(left,rows.length))}%</div><div class="note">${left} employees</div></div>
+    <div class="kpi"><div class="label">Average engagement</div><div class="val">${rows.length?e.toFixed(2):"–"}</div><div class="note">out of 4</div></div>
+    <div class="kpi"><div class="label">High-risk flags</div><div class="val">${flagged.length}</div><div class="note">${flagged.length?`${f1(pct(fLeft,flagged.length))}% of them left`:"none in this selection"}</div></div>`;
+}
+
+/* diverging Likert chart */
+function renderLikert(rows){
+  const W=620, rowH=40, labelW=130, top=8, H=top+ITEMS.length*rowH+18, mid=labelW+(W-labelW)*0.42, scale=(W-labelW)/130;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Distribution of survey ratings">`;
+  ITEMS.forEach((it,i)=>{
+    const y=top+i*rowH, n=rows.length, share=[1,2,3,4].map(l=>pct(rows.filter(d=>d[it.k]===l).length,n));
+    s+=`<text x="0" y="${y+rowH/2+4}" font-size="13" fill="#3B0A24">${it.label}</text>`;
+    let x = mid - (share[0]+share[1])*scale;
+    [0,1,2,3].forEach(j=>{
+      const w=share[j]*scale;
+      s+=`<rect x="${x}" y="${y+7}" width="${Math.max(0,w)}" height="${rowH-14}" fill="${LEVEL_COLORS[j+1]}" stroke="#fff" data-tip="${it.label}: <b>${f1(share[j])}%</b> rated ${j+1}"/>`;
+      if(share[j]>=8) s+=`<text x="${x+w/2}" y="${y+rowH/2+4}" text-anchor="middle" font-size="11.5" font-weight="600" fill="${j===0||j===3?"#fff":"#880E4F"}" pointer-events="none">${Math.round(share[j])}%</text>`;
+      x+=w;
+    });
+  });
+  s+=`<line x1="${mid}" x2="${mid}" y1="${top}" y2="${top+ITEMS.length*rowH}" stroke="#880E4F"/>`;
+  s+=`<text x="${mid-6}" y="${H-2}" text-anchor="end" font-size="11" fill="#7A4A60">← low (1–2)</text><text x="${mid+6}" y="${H-2}" font-size="11" fill="#7A4A60">high (3–4) →</text></svg>`;
+  $("likert").innerHTML = rows.length ? s : `<div class="empty">No employees match these filters.</div>`;
+  $("likertLegend").innerHTML = [1,2,3,4].map(l=>`<span><i style="background:${LEVEL_COLORS[l]}"></i>${l}${l===1?" (lowest)":l===4?" (highest)":""}</span>`).join("");
+  bindTips($("likert"));
+}
+
+/* attrition by rating */
+function renderByRating(rows){
+  const W=480,H=250,m={l:40,r:10,t:16,b:30}, iw=W-m.l-m.r, ih=H-m.t-m.b;
+  const stats=[1,2,3,4].map(l=>{ const g=rows.filter(d=>d[state.item]===l); return {l,n:g.length,rate:pct(g.filter(d=>d.left).length,g.length)}; });
+  const overall = pct(rows.filter(d=>d.left).length, rows.length);
+  const max = Math.max(40, Math.ceil(Math.max(...stats.map(s=>s.rate),overall)/10)*10);
+  const y=v=>m.t+ih-(v/max)*ih, bw=iw/4*0.62;
+  let s=`<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Attrition by rating">`;
+  for(let v=0;v<=max;v+=10) s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(v)}" y2="${y(v)}" stroke="rgba(136,14,79,.1)"/><text x="${m.l-6}" y="${y(v)+4}" text-anchor="end" font-size="11" fill="#7A4A60">${v}%</text>`;
+  stats.forEach((st,i)=>{
+    const cx=m.l+iw/4*(i+.5), h=ih-(y(st.rate)-m.t);
+    s+=`<rect x="${cx-bw/2}" y="${y(st.rate)}" width="${bw}" height="${Math.max(0,ih-(y(st.rate)-m.t))}" rx="6" fill="${LEVEL_COLORS[st.l]}" data-tip="Rated ${st.l}: <b>${f1(st.rate)}%</b> left (${st.n} employees)"/>`;
+    s+=`<text x="${cx}" y="${y(st.rate)-6}" text-anchor="middle" font-size="12.5" font-weight="700" fill="#880E4F">${st.n?Math.round(st.rate)+"%":"–"}</text>`;
+    s+=`<text x="${cx}" y="${H-10}" text-anchor="middle" font-size="12" fill="#7A4A60">Rated ${st.l} · n=${st.n}</text>`;
+  });
+  s+=`<line x1="${m.l}" x2="${W-m.r}" y1="${y(overall)}" y2="${y(overall)}" stroke="#880E4F" stroke-dasharray="5 4"/>`;
+  s+=`<text x="${W-m.r}" y="${y(overall)-5}" text-anchor="end" font-size="11" fill="#880E4F">overall ${Math.round(overall)}%</text></svg>`;
+  $("byRating").innerHTML = rows.length ? s : `<div class="empty">No employees match these filters.</div>`;
+  bindTips($("byRating"));
+}
+
+/* role table */
+function renderRoles(rows){
+  const roles=[...new Set(rows.map(d=>d.role))].map(r=>{
+    const g=rows.filter(d=>d.role===r);
+    return {role:r, n:g.length, left:pct(g.filter(d=>d.left).length,g.length), ot:pct(g.filter(d=>d.ot==="Yes").length,g.length),
+            eng:g.reduce((a,d)=>a+eng(d),0)/g.length, flags:g.filter(d=>d.risk>=RISK_CUT&&!d.left).length};
+  });
+  const k=state.roleSort, dir=state.roleDir;
+  roles.sort((a,b)=>((a[k]>b[k])-(a[k]<b[k]))*dir);
+  const maxLeft=Math.max(1,...roles.map(r=>r.left));
+  const head=[["role","Role"],["n","Employees"],["left","Left"],["ot","Overtime"],["eng","Engagement"],["flags","Current high-risk"]];
+  let h=`<thead><tr>${head.map(([kk,l])=>`<th data-k="${kk}">${l}${k===kk?(dir>0?" ▲":" ▼"):""}</th>`).join("")}</tr></thead><tbody>`;
+  roles.forEach(r=>{ h+=`<tr><td><b>${r.role}</b></td><td>${r.n}</td><td><span class="bar" style="width:${Math.round(r.left/maxLeft*90)}px;background:${r.left>25?"#880E4F":r.left>15?"#D81B60":"#F48FB1"}"></span>${f1(r.left)}%</td><td>${Math.round(r.ot)}%</td><td>${r.eng.toFixed(2)}</td><td>${r.flags||"–"}</td></tr>`; });
+  $("roles").innerHTML = roles.length ? h+"</tbody>" : `<tbody><tr><td class="empty">No employees match these filters.</td></tr></tbody>`;
+  $("roles").querySelectorAll("th").forEach(th=>th.addEventListener("click",()=>{ const kk=th.dataset.k; state.roleDir = state.roleSort===kk?-state.roleDir:(kk==="role"?1:-1); state.roleSort=kk; renderRoles(filtered()); }));
+}
+
+/* watch list */
+function reasons(d){
+  const out=[];
+  if(d.ot==="Yes") out.push(`<span class="pill hot">Overtime</span>`);
+  ITEMS.forEach(it=>{ if(d[it.k]===1) out.push(`<span class="pill hot">${it.label} rated 1</span>`); else if(d[it.k]===2 && (it.k==="inv"||it.k==="wlb")) out.push(`<span class="pill">${it.label} rated 2</span>`); });
+  if(d.level===1) out.push(`<span class="pill">Entry level</span>`);
+  return out.join("") || `<span class="pill">Combination of factors</span>`;
+}
+function riskColor(r){ return r>=0.6?"#880E4F":r>=0.4?"#AD1457":r>=0.25?"#D81B60":"#F48FB1"; }
+function renderWatch(rows){
+  const list=rows.filter(d=>!d.left).sort((a,b)=>b.risk-a.risk).slice(0,12);
+  let h=`<thead><tr><th>Employee</th><th>Role</th><th>Department</th><th>Risk</th><th>Engagement</th><th>Why flagged</th></tr></thead><tbody>`;
+  list.forEach(d=>{ h+=`<tr><td>#${d.id}</td><td>${d.role}</td><td>${d.dept}</td><td><span class="risk" style="background:${riskColor(d.risk)}">${Math.round(d.risk*100)}%</span></td><td>${eng(d).toFixed(1)}</td><td>${reasons(d)}</td></tr>`; });
+  $("watch").innerHTML = list.length ? h+"</tbody>" : `<tbody><tr><td class="empty">No current employees match these filters.</td></tr></tbody>`;
+}
+
+function renderAll(){ const rows=filtered(); renderKPIs(rows); renderLikert(rows); renderByRating(rows); renderRoles(rows); renderWatch(rows); }
+
+/* controls */
+$("fDept").innerHTML = `<option value="">All</option>` + [...new Set(ALL.map(d=>d.dept))].sort().map(d=>`<option>${d}</option>`).join("");
+$("fLevel").innerHTML = `<option value="">All</option>` + [1,2,3,4,5].map(l=>`<option value="${l}">Level ${l}</option>`).join("");
+$("item").innerHTML = ITEMS.map(it=>`<option value="${it.k}">${it.label}</option>`).join("");
+$("item").value = state.item;
+$("fDept").addEventListener("change",e=>{state.dept=e.target.value;renderAll();});
+$("fOt").addEventListener("change",e=>{state.ot=e.target.value;renderAll();});
+$("fLevel").addEventListener("change",e=>{state.level=e.target.value;renderAll();});
+$("item").addEventListener("change",e=>{state.item=e.target.value;renderByRating(filtered());});
+$("reset").addEventListener("click",()=>{ state.dept=state.ot=state.level=""; ["fDept","fOt","fLevel"].forEach(id=>$(id).value=""); renderAll(); });
+renderAll();
+</script>
+</body>
+</html>

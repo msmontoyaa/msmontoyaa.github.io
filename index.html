@@ -111,6 +111,7 @@ section{padding:84px 0}
 .tags span{font-size:12px;font-weight:500;padding:4px 10px;border-radius:999px;border:1px solid var(--p100);color:var(--p700)}
 .link{font-weight:700;color:var(--p600);text-decoration:none;border-bottom:2px solid var(--p100);padding-bottom:2px;transition:border-color .2s}
 .link:hover{border-color:var(--p600)}
+.links{display:flex;flex-wrap:wrap;gap:18px}
 .viz{background:linear-gradient(160deg,var(--p50),#fff);display:flex;align-items:center;justify-content:center;padding:26px;min-height:300px}
 .viz img{width:100%;border-radius:12px;background:#fff;box-shadow:0 12px 30px -18px rgba(136,14,79,.5)}
 @media(max-width:860px){.proj{grid-template-columns:1fr}.proj .viz{order:-1}.proj .body{padding:24px}.viz{min-height:0;padding:18px}}
@@ -261,7 +262,7 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
   <div class="wrap">
     <div class="head rv">
       <div><div class="eyebrow">02 · Data Analytics</div><h2>Data Analytics Projects</h2></div>
-      <p>Six projects in SQL, Python and R. Each notebook and write-up is on GitHub.</p>
+      <p>Seven projects in SQL, Python and R, including an interactive dashboard. Each notebook and write-up is on GitHub.</p>
     </div>
 
     <article class="proj rv">
@@ -283,6 +284,27 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
         <a class="link" href="https://github.com/msmontoyaa/facebook-ad-campaign-performance" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
       <div class="viz"><img loading="lazy" src="images/charts/cost_per_purchase_by_audience.svg" alt="Cost per purchase by age group and gender"></div>
+    </article>
+
+    <article class="proj rv">
+      <div class="body">
+        <div class="num">Python · Interactive dashboard</div>
+        <h3>Employee Engagement &amp; Attrition</h3>
+        <p>I analyzed survey ratings for 1,470 employees to find which answers signal that someone may leave, built an early-warning risk score, and turned it into an interactive dashboard.</p>
+        <div class="stats">
+          <div class="stat"><b data-count="34" data-suf="%">34%</b><span>left after rating job involvement 1, vs 9% at 4</span></div>
+          <div class="stat"><b data-count="5.7" data-dec="1" data-suf="×">5.7×</b><span>higher odds of leaving with overtime</span></div>
+          <div class="stat"><b data-count="58" data-suf="%">58%</b><span>of high-risk flags did leave</span></div>
+        </div>
+        <ul>
+          <li>The lowest rating is the warning sign; averages hide it.</li>
+          <li>A risk score flagging 15% of employees caught over half of those who left.</li>
+          <li>Built with IBM's fictional HR dataset, made for teaching.</li>
+        </ul>
+        <div class="tags"><span>Python</span><span>Survey analysis</span><span>Logistic regression</span><span>Dashboard</span><span>JavaScript</span></div>
+        <div class="links"><a class="link" href="employee-engagement-dashboard/" target="_blank" rel="noopener">Open live dashboard ↗</a><a class="link" href="https://github.com/msmontoyaa/employee-engagement-attrition" target="_blank" rel="noopener">View on GitHub ↗</a></div>
+      </div>
+      <div class="viz"><img loading="lazy" src="images/charts/attrition_by_rating.svg" alt="Share of employees who left at each survey rating"></div>
     </article>
 
     <article class="proj rv">
