@@ -261,49 +261,28 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
   <div class="wrap">
     <div class="head rv">
       <div><div class="eyebrow">02 · Data Analytics</div><h2>Data Analytics Projects</h2></div>
-      <p>Seven projects in SQL, Python and R. Each notebook and write-up is on GitHub.</p>
+      <p>Six projects in SQL, Python and R. Each notebook and write-up is on GitHub.</p>
     </div>
 
     <article class="proj rv">
       <div class="body">
-        <div class="num">R</div>
-        <h3>Predicting Online Purchases from Website Session Data</h3>
-        <p>Only about 15% of visits to an online store end in a purchase. I used 12,330 real browsing sessions to predict which ones would, and compared logistic regression, a decision tree and a random forest.</p>
+        <div class="num">Python · Marketing analytics</div>
+        <h3>Facebook Ad Campaign Performance</h3>
+        <p>I analyzed 1,143 Facebook ads across three campaigns to find which campaigns and audiences turn ad spend into purchases most efficiently, and how the same budget could buy more customers.</p>
         <div class="stats">
-          <div class="stat"><b data-count="0.932" data-dec="3">0.932</b><span>AUC, random forest on unseen data</span></div>
-          <div class="stat"><b data-count="12330" data-sep="1">12,330</b><span>sessions analyzed</span></div>
-          <div class="stat"><b data-count="6">6</b><span>of 17 predictors keep 99% of the performance</span></div>
+          <div class="stat"><b data-count="95" data-suf="%">95%</b><span>of budget in one campaign, for 81% of purchases</span></div>
+          <div class="stat"><b data-count="3" data-suf="×">3×</b><span>cost per purchase, ages 45–49 vs 30–34</span></div>
+          <div class="stat"><b data-count="10" data-pre="+" data-suf="%">+10%</b><span>more purchases from the same budget, at best</span></div>
         </div>
         <ul>
-          <li>Page value was the top predictor in every model.</li>
-          <li>Purchase rate climbs from about 2% in February to about 25% in November.</li>
-          <li>New visitors convert more (25%) than returning ones (14%).</li>
+          <li>Younger audiences cost $37 per purchase, older ones $113, yet the older group got more budget.</li>
+          <li>Doubling an ad's spend bought only about 20% more purchases.</li>
+          <li>I recommended where to move the budget and how to test it first.</li>
         </ul>
-        <div class="tags"><span>R</span><span>randomForest</span><span>rpart</span><span>ROC / AUC</span><span>Class imbalance</span><span>E-commerce</span></div>
-        <a class="link" href="https://github.com/msmontoyaa/online-purchase-prediction" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <div class="tags"><span>Python</span><span>Cost per acquisition</span><span>Funnel metrics</span><span>Bootstrap</span><span>Marketing analytics</span></div>
+        <a class="link" href="https://github.com/msmontoyaa/facebook-ad-campaign-performance" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
-      <div class="viz"><img loading="lazy" src="https://raw.githubusercontent.com/msmontoyaa/online-purchase-prediction/main/images/roc_curves.svg" alt="ROC curves comparing logistic regression, decision tree and random forest"></div>
-    </article>
-
-    <article class="proj rv">
-      <div class="body">
-        <div class="num">Python</div>
-        <h3>Customer Segmentation for an Online Retailer</h3>
-        <p>I grouped the customers of a UK online gift retailer into four segments based on how recently, how often and how much they buy, using RFM analysis and k-means clustering.</p>
-        <div class="stats">
-          <div class="stat"><b data-count="4338" data-sep="1">4,338</b><span>customers segmented</span></div>
-          <div class="stat"><b data-count="4">4</b><span>segments from RFM + k-means</span></div>
-          <div class="stat"><b data-count="65" data-suf="%">65%</b><span>of revenue from 17% of customers</span></div>
-        </div>
-        <ul>
-          <li>The top 20% of customers generate about 75% of revenue.</li>
-          <li>Champions are one in six customers and almost two thirds of revenue.</li>
-          <li>Lapsed customers are the largest group (36%) but bring in only 6%.</li>
-        </ul>
-        <div class="tags"><span>Python</span><span>scikit-learn</span><span>K-means</span><span>RFM analysis</span><span>Marketing analytics</span></div>
-        <a class="link" href="https://github.com/msmontoyaa/customer-segmentation-rfm" target="_blank" rel="noopener">View on GitHub ↗</a>
-      </div>
-      <div class="viz"><img loading="lazy" src="images/charts/segment_shares.svg" alt="Each customer segment's share of customers versus share of revenue"></div>
+      <div class="viz"><img loading="lazy" src="images/charts/cost_per_purchase_by_audience.svg" alt="Cost per purchase by age group and gender"></div>
     </article>
 
     <article class="proj rv">
@@ -330,6 +309,27 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
     <article class="proj rv">
       <div class="body">
         <div class="num">Python</div>
+        <h3>Customer Segmentation for an Online Retailer</h3>
+        <p>I grouped the customers of a UK online gift retailer into four segments based on how recently, how often and how much they buy, using RFM analysis and k-means clustering.</p>
+        <div class="stats">
+          <div class="stat"><b data-count="4338" data-sep="1">4,338</b><span>customers segmented</span></div>
+          <div class="stat"><b data-count="4">4</b><span>segments from RFM + k-means</span></div>
+          <div class="stat"><b data-count="65" data-suf="%">65%</b><span>of revenue from 17% of customers</span></div>
+        </div>
+        <ul>
+          <li>The top 20% of customers generate about 75% of revenue.</li>
+          <li>Champions are one in six customers and almost two thirds of revenue.</li>
+          <li>Lapsed customers are the largest group (36%) but bring in only 6%.</li>
+        </ul>
+        <div class="tags"><span>Python</span><span>scikit-learn</span><span>K-means</span><span>RFM analysis</span><span>Marketing analytics</span></div>
+        <a class="link" href="https://github.com/msmontoyaa/customer-segmentation-rfm" target="_blank" rel="noopener">View on GitHub ↗</a>
+      </div>
+      <div class="viz"><img loading="lazy" src="images/charts/segment_shares.svg" alt="Each customer segment's share of customers versus share of revenue"></div>
+    </article>
+
+    <article class="proj rv">
+      <div class="body">
+        <div class="num">Python</div>
         <h3>A/B Test Analysis: Mobile Game Retention</h3>
         <p>I analyzed an experiment on 90,189 players of the mobile game Cookie Cats to see whether moving a progression gate from level 30 to level 40 changed how many players came back.</p>
         <div class="stats">
@@ -350,44 +350,23 @@ dialog button{position:fixed;top:16px;right:18px;border:0;background:#fff;color:
 
     <article class="proj rv">
       <div class="body">
-        <div class="num">Python</div>
-        <h3>Real Madrid in La Liga, 2015–2026: What Wins Matches?</h3>
-        <p>I looked at eleven seasons of Real Madrid in La Liga to find out how much home advantage matters, which in-game stats separate wins from everything else, and whether bookmakers price the team correctly.</p>
+        <div class="num">R</div>
+        <h3>Predicting Online Purchases from Website Session Data</h3>
+        <p>Only about 15% of visits to an online store end in a purchase. I used 12,330 real browsing sessions to predict which ones would, and compared logistic regression, a decision tree and a random forest.</p>
         <div class="stats">
-          <div class="stat"><b data-count="418">418</b><span>matches across 11 seasons</span></div>
-          <div class="stat"><b data-count="75" data-suf="%">75%</b><span>home win rate vs 60% away</span></div>
-          <div class="stat"><b data-count="9">9</b><span>of 11 seasons beating market expectations</span></div>
+          <div class="stat"><b data-count="0.932" data-dec="3">0.932</b><span>AUC, random forest on unseen data</span></div>
+          <div class="stat"><b data-count="12330" data-sep="1">12,330</b><span>sessions analyzed</span></div>
+          <div class="stat"><b data-count="6">6</b><span>of 17 predictors keep 99% of the performance</span></div>
         </div>
         <ul>
-          <li>Each extra shot on target vs the opponent multiplies the odds of winning by 1.41.</li>
-          <li>Playing at home multiplies the odds by 2.5, even after controlling for shots.</li>
-          <li>Match by match, the bookmaker still beat my simple form model (AUC 0.694 vs 0.652).</li>
+          <li>Page value was the top predictor in every model.</li>
+          <li>Purchase rate climbs from about 2% in February to about 25% in November.</li>
+          <li>New visitors convert more (25%) than returning ones (14%).</li>
         </ul>
-        <div class="tags"><span>Python</span><span>pandas</span><span>statsmodels</span><span>scikit-learn</span><span>Odds ratios</span><span>Sports analytics</span></div>
-        <a class="link" href="https://github.com/msmontoyaa/real-madrid-match-analytics" target="_blank" rel="noopener">View on GitHub ↗</a>
+        <div class="tags"><span>R</span><span>randomForest</span><span>rpart</span><span>ROC / AUC</span><span>Class imbalance</span><span>E-commerce</span></div>
+        <a class="link" href="https://github.com/msmontoyaa/online-purchase-prediction" target="_blank" rel="noopener">View on GitHub ↗</a>
       </div>
-      <div class="viz"><img loading="lazy" src="https://raw.githubusercontent.com/msmontoyaa/real-madrid-match-analytics/main/images/win_rate_by_sot_diff.svg" alt="Real Madrid win rate by shots-on-target difference"></div>
-    </article>
-
-    <article class="proj rv">
-      <div class="body">
-        <div class="num">Python</div>
-        <h3>How Does the Federal Reserve Set Interest Rates?</h3>
-        <p>I studied how the federal funds rate, inflation and unemployment have moved since 1960. I tested the Taylor rule, measured how the Fed’s response to inflation changed by era, and put the 2022–23 rate hikes in context.</p>
-        <div class="stats">
-          <div class="stat"><b data-count="801">801</b><span>months of official data</span></div>
-          <div class="stat"><b data-count="12">12</b><span>hiking cycles compared</span></div>
-          <div class="stat"><b data-count="5.13" data-dec="2" data-pre="+">+5.13</b><span>points in 17 months, 2022–23</span></div>
-        </div>
-        <ul>
-          <li>Before 1979, a 1-point rise in inflation raised rates by only 0.78 points, so real rates fell.</li>
-          <li>From 1987 to 2007 the response rose to 1.35, in line with the Taylor principle.</li>
-          <li>The Taylor rule fits the Greenspan era best and recent years worst.</li>
-        </ul>
-        <div class="tags"><span>Python</span><span>Time series</span><span>OLS + Newey-West</span><span>Taylor rule</span><span>Macroeconomics</span></div>
-        <a class="link" href="https://github.com/msmontoyaa/fed-rates-inflation-analysis" target="_blank" rel="noopener">View on GitHub ↗</a>
-      </div>
-      <div class="viz"><img loading="lazy" src="https://raw.githubusercontent.com/msmontoyaa/fed-rates-inflation-analysis/main/images/taylor_rule_vs_actual.svg" alt="Taylor rule prescription versus the actual federal funds rate"></div>
+      <div class="viz"><img loading="lazy" src="https://raw.githubusercontent.com/msmontoyaa/online-purchase-prediction/main/images/roc_curves.svg" alt="ROC curves comparing logistic regression, decision tree and random forest"></div>
     </article>
 
     <article class="proj rv">
